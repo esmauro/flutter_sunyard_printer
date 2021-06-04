@@ -1,6 +1,7 @@
 name: flutter_sunyard_printer
 description: Flutter plugin allows to print thermal receipts using Sunyard device with a built-in printer
 version: 0.1.0
+homepage: https://github.com/esmauro/flutter_sunyard_printer
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

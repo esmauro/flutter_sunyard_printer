@@ -52,7 +52,7 @@ public class FlutterSunyardPrinterModule {
     print.appendTakePaper(Printer2.FEEDING_PAPER, lines);
   }
 
-  public void printFixedImage(String base64) {
+  public void printImage(String base64) {
 
       byte[] bytes = Base64Utils.decode(base64);
       for (int i = 0; i < bytes.length; ++i) {
@@ -111,12 +111,12 @@ public class FlutterSunyardPrinterModule {
 
 
 
-  public void printFixedText() {
-    print.appendTextEntity2(new TextEntity("Fin de la prueba.", null, false, null));  
+  public void printText(String text) {
+    print.appendTextEntity2(new TextEntity(text, null, false, null));  
     
     PrintRespCode printRespCode = print.startPrint();
     Log.d("mtest", "yendo a imprimir");
-    Toast.makeText(this.context, "Luego de ejecutar", Toast.LENGTH_SHORT).show();
+//    Toast.makeText(this.context, "Luego de ejecutar", Toast.LENGTH_SHORT).show();
 //
     if (printRespCode != PrintRespCode.Print_Success) {
         if (printRespCode == PrintRespCode.Printer_PaperLack || printRespCode == PrintRespCode.print_Unknow) {

@@ -35,8 +35,8 @@ public class FlutterSunyardPrinterPlugin implements FlutterPlugin, MethodCallHan
   private MethodChannel channel;
   private FlutterSunyardPrinterModule flutterSunyardPrinterModule;
 
-  private String PRINT_FIXED_IMAGE = "printFixedImage";
-  private String PRINT_FIXED_TEXT = "printFixedText";
+  private String PRINT_IMAGE = "printImage";
+  private String PRINT_TEXT = "printText";
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -65,12 +65,13 @@ public class FlutterSunyardPrinterPlugin implements FlutterPlugin, MethodCallHan
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals(PRINT_FIXED_TEXT)) {
-      flutterSunyardPrinterModule.printFixedText();
+    if (call.method.equals(PRINT_TEXT)) {
+      String text = call.argument("text");      
+      flutterSunyardPrinterModule.printText(text);
       result.success(null);
-    } else if (call.method.equals(PRINT_FIXED_IMAGE)) {
+    } else if (call.method.equals(PRINT_IMAGE)) {
       String base64 = call.argument("base64");
-      flutterSunyardPrinterModule.printFixedImage(base64);
+      flutterSunyardPrinterModule.printImage(base64);
       result.success(null);
     } else {
       result.notImplemented();

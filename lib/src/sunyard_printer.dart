@@ -12,23 +12,21 @@ import 'package:flutter/services.dart';
 import 'package:flutter_sunyard_printer/src/enums.dart';
 
 class SunyardPrinter {
-  static const String PRINT_FIXED_TEXT = "printFixedText";
-  static const String PRINT_FIXED_IMAGE = "printFixedImage";
+  static const String PRINT_TEXT = "printText";
+  static const String PRINT_IMAGE = "printImage";
 
   static const MethodChannel _channel =
       const MethodChannel('flutter_sunyard_printer');
 
   /// Print horizontal full width separator
-  static Future<String> fixedText({
-    String ch = '-',
-    int len = 31,
-    linesAfter = 0,
-  }) async {
-    await _channel.invokeMethod(PRINT_FIXED_TEXT);
+  static Future<String> text(String text) async {
+    await _channel.invokeMethod(PRINT_TEXT, {
+      "text":text
+      });
   }
 
-  static Future<String> fixedImage(String base64) async {
-    await _channel.invokeMethod(PRINT_FIXED_IMAGE, {
+  static Future<String> image(String base64) async {
+    await _channel.invokeMethod(PRINT_IMAGE, {
       "base64": base64,
     });
   }
